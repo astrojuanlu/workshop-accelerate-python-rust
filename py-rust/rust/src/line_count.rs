@@ -1,3 +1,4 @@
+use rayon::prelude::*;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 use std::path::{Path, PathBuf};
@@ -21,7 +22,7 @@ fn filter_by_extension(paths: Vec<PathBuf>, extension: &str) -> Vec<PathBuf> {
 
 /// Count total lines across multiple files
 fn count_lines_in_files(filepaths: &[PathBuf]) -> usize {
-    filepaths.iter().map(|p| count_lines(p)).sum()
+    filepaths.par_iter().map(|p| count_lines(p)).sum()
 }
 
 /// Scan directory and count lines of code in Python files
