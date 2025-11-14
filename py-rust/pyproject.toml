@@ -12,9 +12,27 @@ classifiers = [
 ]
 dynamic = ["version"]
 
+[dependency-groups]
+dev = [
+    "ruff>=0.14.5",
+]
+
 [tool.maturin]
 module-name = "py_rust._py_rust"
 
 [tool.uv]
 # Rebuild package when any Rust files change
 cache-keys = [{file = "pyproject.toml"}, {file = "rust/Cargo.toml"}, {file = "**/*.rs"}]
+
+[tool.ruff]
+show-fixes = true
+
+[tool.ruff.lint]
+select = [
+    "F",  # Pyflakes
+    "E",  # Pycodestyle
+    "W",  # Pycodestyle
+    "UP",  # pyupgrade
+    "I",  # isort
+    "PL",  # Pylint
+]
