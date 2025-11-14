@@ -2,6 +2,7 @@ use pyo3::prelude::*;
 
 /// A Python module implemented in Rust.
 #[pymodule]
+#[pyo3(name = "_py_rust")]
 mod py_rust {
     use pyo3::prelude::*;
 
